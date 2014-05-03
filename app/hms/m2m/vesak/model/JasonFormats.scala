@@ -5,4 +5,5 @@ import play.api.libs.json.Json
 object JasonFormats {
   implicit val colorFormat = Json.format[LanternColor]
   implicit val smsFormat = Json.format[SmsMessage]
+  implicit val sdpRespFormat = Json.format[SdpResp]
 }

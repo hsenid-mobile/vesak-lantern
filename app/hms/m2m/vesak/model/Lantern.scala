@@ -6,4 +6,6 @@ case class SmsMessage(applicationId: String,
                       message: String,
                       requestId: String)
 
+case class SdpResp(statusCode: String, statusDescription: String)
+
 
