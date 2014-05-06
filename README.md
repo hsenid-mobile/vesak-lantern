@@ -24,7 +24,7 @@ Sample Mo Message
 curl http://localhost:9000/sms -H "Content-Type: application/json" -X POST -d'
 {
 "version":"1.0",
-"message":"test",
+"message":"vote r",
 "sourceAddress":"tel:94776177393",
 "requestId":"12345678910",
 "applicationId": "APP_000001"}'

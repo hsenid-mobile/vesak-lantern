@@ -3,6 +3,7 @@
 # ~~~~
 
 GET     /                           controllers.Application.index
+GET     /lantern                           controllers.Application.lantern
 GET     /color                    controllers.LanternApplication.color
 POST    /sms                        controllers.LanternApplication.onSms
 
