@@ -7,15 +7,15 @@ import hms.m2m.vesak.model.{SdpResp, SmsMessage, LanternColor}
 import hms.m2m.vesak.model.JasonFormats._
 import com.typesafe.scalalogging.slf4j.Logging
 import scala.util.control.Exception._
+import hms.m2m.vesak.services.channel.SmsColorControlChannel
 
 
 object LanternApplication extends Controller with Logging {
 
 
   def color = Action {
-    val current= LanternService.currentColor
 
-    Ok(Json.toJson(current))
+    Ok(Json.toJson(LanternService.currentColor))
 
   }
 
@@ -38,7 +38,7 @@ object LanternApplication extends Controller with Logging {
       case kwd :: vote :: rest => {
         logger.info(s"Vote received [${vote}]")
 
-        VoteStore.voteReceived(vote.charAt(0).toString)
+        SmsColorControlChannel.vote(vote.charAt(0).toString)
       }
       case _ => throw new RuntimeException("Invalid vote")
     }
