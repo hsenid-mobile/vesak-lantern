@@ -1,9 +1,9 @@
 package controllers
 
 import play.api.mvc.{Request, Result, Action, Controller}
-import hms.m2m.vesak.services.{VoteStore, LanternService}
+import hms.m2m.vesak.services.LanternService
 import play.api.libs.json.{JsValue, Json}
-import hms.m2m.vesak.model.{SdpResp, SmsMessage, LanternColor}
+import hms.m2m.vesak.model.{SdpResp, SmsMessage}
 import hms.m2m.vesak.model.JasonFormats._
 import com.typesafe.scalalogging.slf4j.Logging
 import scala.util.control.Exception._

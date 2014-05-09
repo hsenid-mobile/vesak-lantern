@@ -14,27 +14,12 @@ trait VoteEnableColorControlChannel extends ColorControlChannel {
   val green = new AtomicInteger(0)
   val blue = new AtomicInteger(0)
 
+  var nextIntensity = LanternColor(red = 0, green = 0, blue = 0)
+
   resetScheduler
 
   override def currentIntensity : LanternColor = {
-
-    val l = List(red.get(), green.get(), blue.get())
-
-    def getRank(i : Int) : Int = {
-      if(i == 0) {
-        return 0
-      }
-
-      if (l.max == i) {
-        255
-      } else if (l.min == i) {
-        100
-      } else {
-        175
-      }
-    }
-
-    LanternColor(red = getRank(red.get()), green = getRank(green.get()), blue = getRank(blue.get()))
+    nextIntensity
   }
 
   def vote(color : String) {
@@ -52,7 +37,7 @@ trait VoteEnableColorControlChannel extends ColorControlChannel {
     val task = new Runnable {
       def run() {
         synchronized {
-          List(red, green, blue).foreach(color => color.set(0))
+          calculateAndRestForNextCycle
         }
       }
     }
@@ -63,4 +48,25 @@ trait VoteEnableColorControlChannel extends ColorControlChannel {
       interval = Duration(10, TimeUnit.SECONDS),
       runnable = task)
   }
+
+  def calculateAndRestForNextCycle {
+    val l = List(red.get(), green.get(), blue.get())
+
+    def getRank(i : Int) : Int = {
+      if(i == 0) {
+        return 0
+      }
+
+      if (l.max == i) {
+        255
+      } else if (l.min == i) {
+        100
+      } else {
+        175
+      }
+    }
+    nextIntensity = LanternColor(red = getRank(red.get()), green = getRank(green.get()), blue = getRank(blue.get()))
+    List(red, green, blue).foreach(color => color.set(0))
+  }
+
 }
