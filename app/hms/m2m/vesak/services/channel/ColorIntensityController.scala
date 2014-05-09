@@ -16,31 +16,17 @@ object ColorIntensityController extends Logging{
         blue = c1.currentIntensity.blue * c1.channelWeight.get())
     }
 
-    def sumColors(c1: LanternColor, c2 : LanternColor) = {
-      LanternColor(
-        red = c1.red + c2.red,
-        green = c1.green + c2.green,
-        blue = c1.blue + c2.blue
-      )
+    def compareWeightedSum(c1 : (LanternColor, Int), c2: (LanternColor, Int)) : (LanternColor, Int) = {
+      (LanternColor(
+        red = Math.max(c1._1.red * c1._2, c2._1.red * c2._2),
+        green = Math.max(c1._1.green * c1._2, c2._1.green * c2._2),
+        blue = Math.max(c1._1.blue * c1._2, c2._1.blue * c2._2)
+      ) , 1)
     }
 
-    def weightedSum(c : LanternColor, i : Int) = {
-      LanternColor(
-        red = c.red / i,
-        green = c.green / i,
-        blue = c.blue / i
-      )
-    }
+    val reduce: (LanternColor, Int) = channels.map(c1 => (c1.currentIntensity, c1.channelWeight.get())).reduce((color1, color2) => compareWeightedSum(color1, color2))
 
-    val finalColor: LanternColor = channels.map(c1 => multiplyFromWeight(c1)).reduce((c1, c2) => sumColors(c1, c2))
-
-    val weightSum: Int = channels.map(c1 => c1.channelWeight.get()).reduce((c1, c2) => c1 + c2)
-
-    val finalIntensity: LanternColor = weightedSum(finalColor, weightSum)
-
-    logger.debug("Final intensity " + finalIntensity)
-
-    finalIntensity
+    reduce._1
   }
 
 

@@ -20,7 +20,7 @@ trait VoteEnableColorControlChannel extends ColorControlChannel {
 
     def getRank(i : Int) : Int = {
       if(i == 0) {
-        0
+        return 0
       }
 
       if (l.max == i) {
@@ -32,12 +32,7 @@ trait VoteEnableColorControlChannel extends ColorControlChannel {
       }
     }
 
-
-    val color: LanternColor = LanternColor(red = getRank(red.get()), green = getRank(green.get()), blue = getRank(blue.get()))
-
-    logger.debug("Intensity form channel " + this.getClass.getName + " " + color)
-
-    color
+    LanternColor(red = getRank(red.get()), green = getRank(green.get()), blue = getRank(blue.get()))
   }
 
   def vote(color : String) {

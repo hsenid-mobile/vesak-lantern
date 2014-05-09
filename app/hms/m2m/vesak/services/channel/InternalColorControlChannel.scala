@@ -31,13 +31,9 @@ object InternalColorControlChannel extends ColorControlChannel{
       (minIntensity + Math.abs(Math.sin(piDegreeConversion * i)) * (maxIntensity - minIntensity)).toInt
     }
 
-    val color: LanternColor = LanternColor(red = calculateIntensity(phaseR.get()),
+    LanternColor(red = calculateIntensity(phaseR.get()),
       green = calculateIntensity(phaseG.get()),
       blue = calculateIntensity(phaseB.get()))
-
-    logger.debug("Intensity form channel " + this.getClass.getName + " " + color)
-
-    color
   }
 
 
@@ -49,11 +45,9 @@ object InternalColorControlChannel extends ColorControlChannel{
       def run() {
         synchronized {
           List(phaseR, phaseG, phaseB).foreach(phase => {
+            phase.set(phase.get() + fullCycleDegree/cycleTime.get())
             if(phase.get() % fullCycleDegree == 0) {
               phase.set(0)
-            }
-            else {
-              phase.set(phase.get() + fullCycleDegree/cycleTime.get())
             }
           })
         }
