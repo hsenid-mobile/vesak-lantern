@@ -6,4 +6,5 @@ object JasonFormats {
   implicit val colorFormat = Json.format[LanternColor]
   implicit val smsFormat = Json.format[SmsMessage]
   implicit val sdpRespFormat = Json.format[SdpResp]
+  implicit val colorIntensityResponseFormat = Json.format[LanternColorResponse]
 }

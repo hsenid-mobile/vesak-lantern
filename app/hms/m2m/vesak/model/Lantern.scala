@@ -8,4 +8,4 @@ case class SmsMessage(applicationId: String,
 
 case class SdpResp(statusCode: String, statusDescription: String)
 
-
+case class LanternColorResponse(s1 : LanternColor, s2 : LanternColor)
