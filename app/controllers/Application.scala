@@ -3,8 +3,14 @@ package controllers
 import play.api._
 import play.api.mvc._
 import hms.m2m.vesak.services.StatusScheduler
+import java.util.Date
+import com.typesafe.scalalogging.slf4j.Logging
+//import java.lang.{StringBuilder, String, Integer}
+import scala.util.Random
+import scala.Predef.String
+import scala.StringBuilder
 
-object Application extends Controller {
+object Application extends Controller with Logging{
 
   def index = Action {
     StatusScheduler.startScheduler();
@@ -17,4 +23,48 @@ object Application extends Controller {
   def lantern = Action {
     Ok(views.html.lantern.apply("Vesak Lantern App"))
   }
+
+  //
+  def redButtonOnclick = Action {
+    logger.info("Red Button Click !!!")
+    Ok("")
+  }
+
+  def greenButtonOnclick = Action {
+    logger.info("Green Button Click !!!")
+    Ok("")
+  }
+
+  def blueButtonOnclick = Action {
+    logger.info("Blue Button Click !!!")
+    Ok("")
+  }
+
+  def getVotes = Action {
+    Ok("" + getRandomValue)
+  }
+
+  def changeColor = Action {
+    val hexValue = toHex(getRandomValue, getRandomValue, getRandomValue)
+    Ok(hexValue)
+  }
+
+  def toHex(r: Int, g: Int, b: Int): String = {
+    "#" + toBrowserHexValue(r) + toBrowserHexValue(g) + toBrowserHexValue(b)
+  }
+
+  private def toBrowserHexValue(number: Int): String = {
+    val builder = new StringBuilder
+    builder ++= Integer.toHexString(number & 0xff)
+    while (builder.length < 2) {
+      builder.append("0")
+    }
+    builder.toString().toUpperCase
+  }
+
+  def getRandomValue: Int = {
+    val rnd = new scala.util.Random
+    rnd.nextInt(100)
+  }
+
 }

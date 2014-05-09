@@ -4021,11 +4021,11 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   color: #333;
 }
 .navbar-inverse {
-  background-color: #222;
-  border-color: #080808;
+  background-color: #205081;
+  border-color: #FFFFFF;
 }
 .navbar-inverse .navbar-brand {
-  color: #999;
+  color: #ffffff;
 }
 .navbar-inverse .navbar-brand:hover,
 .navbar-inverse .navbar-brand:focus {
@@ -4036,12 +4036,12 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   color: #999;
 }
 .navbar-inverse .navbar-nav > li > a {
-  color: #999;
+  color: #ffffff;
 }
 .navbar-inverse .navbar-nav > li > a:hover,
 .navbar-inverse .navbar-nav > li > a:focus {
   color: #fff;
-  background-color: transparent;
+  background-color: #3b73af;
 }
 .navbar-inverse .navbar-nav > .active > a,
 .navbar-inverse .navbar-nav > .active > a:hover,
@@ -5782,4 +5782,34 @@ button.close {
     display: none !important;
   }
 }
+
+
+.navbar-default {
+    background-color: #F8F8F8;
+    border-color: #E7E7E7;
+}
+
+
+.bs-example {
+    margin-left: 0;
+    margin-right: 0;
+    background-color: #fff;
+    border-width: 1px;
+    border-color: #ddd;
+    border-radius: 4px 4px 0 0;
+    box-shadow: none;
+}
+
+.bs-example:after {
+    content: "Example";
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    font-size: 12px;
+    font-weight: 700;
+    color: #bbb;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
 /*# sourceMappingURL=bootstrap.css.map */
