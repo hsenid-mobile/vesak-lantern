@@ -14,6 +14,8 @@ trait VoteEnableColorControlChannel extends ColorControlChannel {
   val green = new AtomicInteger(0)
   val blue = new AtomicInteger(0)
 
+  resetScheduler
+
   override def currentIntensity : LanternColor = {
 
     val l = List(red.get(), green.get(), blue.get())

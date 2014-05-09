@@ -12,7 +12,7 @@ object InternalColorControlChannel extends ColorControlChannel{
 
   internalCycle
 
-  val cycleTime = new AtomicInteger(5)
+  val cycleTime = new AtomicInteger(36)
 
   val fullCycleDegree = 360
 
@@ -35,8 +35,6 @@ object InternalColorControlChannel extends ColorControlChannel{
       green = calculateIntensity(phaseG.get()),
       blue = calculateIntensity(phaseB.get()))
   }
-
-
 
   def internalCycle {
     val actorSystem = ActorSystem()
