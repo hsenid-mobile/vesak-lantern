@@ -3,7 +3,8 @@
 
 <html>
 <head>
-    <title>Welcome to Play Application demo</title>
+    <title>hSenid Vesak Lantern Application</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/main.css")">
     <link rel="shortcut icon" type="image/png" href="@routes.Assets.at("images/favicon.png")">
     <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/bootstrap.min.css")">
@@ -26,7 +27,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">Vesak Lantern</a>
+            <a class="navbar-brand" href="#">hSenid Vesak Lantern App</a>
         </div>
     </div>
 </div>
@@ -37,36 +38,41 @@
     <br/>
     <br/>
     <!-- Example row of columns -->
+    <div class="row" style="text-align: center">
+        <h2>Vote for Your Favourite Color</h2>
+    </div>
+    <br/>
     <div class="row">
         <div class="col-md-6">
-            <!--<p id="lanternLabel" class="col-sm-2" style="color: orange">Lantern</p>-->
-            <div style="text-align: center; padding-top: 30px; padding-left: ">
-                <img src="@routes.Assets.at("images/lantern_sketch.png")" width="450" height="400" />
+            <div class="main-lantern-structure" style="text-align: center">
+                <img id="blueImg" class="blue-lantern-img lantern-sketch" src="@routes.Assets.at("images/lantern_sketch_sv2.svg")"/>
+                <img id="redImg" class="red-lantern-img lantern-sketch" src="@routes.Assets.at("images/lantern_sketch_red.svg")"  />
+                <img id="greenImg" class="green-lantern-img lantern-sketch" src="@routes.Assets.at("images/lantern_sketch_blue.svg")"/>
             </div>
+
             <!--<svg id="svg1" xmlns="http://www.w3.org/2000/svg" style="width: 3.5in; height: 1in">-->
-                <!--<rect id="rect1" width="100" height="400" style="fill:rgb(0,0,255);stroke-width:3;stroke:rgb(0,0,0)" />-->
-                <!--&lt;!&ndash;<circle id="circle1" r="30" cx="34" cy="34" style="fill: #17FF3B; stroke: #0000FF; stroke-width: 2"/>&ndash;&gt;-->
+            <!--<rect id="rect1" width="100" height="400" style="fill:rgb(0,0,255);stroke-width:3;stroke:rgb(0,0,0)" />-->
+            <!--&lt;!&ndash;<circle id="circle1" r="30" cx="34" cy="34" style="fill: #17FF3B; stroke: #0000FF; stroke-width: 2"/>&ndash;&gt;-->
             <!--</svg>-->
         </div>
-        <div class="col-md-6">
+
+
+        <div class="col-md-6" style="text-align: center">
 
             <div class="row">
                 <h3>Current Voting</h3>
-                <div class="form-group">
-                    <div class="col-sm-8">
-                        <div class="progress progress-striped active">
-                            <div id="redProgressBar" class="progress-bar progress-bar-danger"  role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100">
-                                <span class="sr-only">45% Complete</span>
-                            </div>
+
+                <div class="col-sm-7 col-md-offset-2">
+                    <div class="progress progress-striped active">
+                        <div id="redProgressBar" class="progress-bar progress-bar-danger"  role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100">
+                            <span class="sr-only">45% Complete</span>
                         </div>
                     </div>
-                    <!--<p  class="text-error"></p>-->
-                    <label id="ajaxMsg" class="col-sm-2" style="color: red">10000</label>
-                    <!--<label class="col-sm-2" style="color: #ff0000">90000</label>-->
                 </div>
+                <label id="ajaxMsg" class="col-sm-2" style="color: red">10000</label>
 
-                <div class="form-group">
-                    <div class="col-sm-8">
+                <!--<div class="form-group">-->
+                <div class="col-sm-7 col-md-offset-2">
                         <div class="progress progress-striped active">
                             <div id="greenProgressBar" class="progress-bar progress-bar-success"  role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 45%">
                                 <span class="sr-only">45% Complete</span>
@@ -74,10 +80,10 @@
                         </div>
                     </div>
                     <label class="col-sm-2" style="color: green">10000</label>
-                </div>
+                <!--</div>-->
 
-                <div class="form-group">
-                    <div class="col-sm-8">
+                <!--<div class="form-group">-->
+                <div class="col-sm-7 col-md-offset-2">
                         <div class="progress progress-striped active">
                             <div id="blueProgressBar" class="progress-bar progress-bar-info"  role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 45%">
                                 <span class="sr-only">45% Complete</span>
@@ -85,16 +91,24 @@
                         </div>
                     </div>
                     <label id="ajaxMsgBlue" class="col-sm-2" style="color: blue">4500</label>
-                </div>
+                <!--</div>-->
             </div>
 
             <div class="row">
                 <h3>Vote Now</h3>
-                <button id="redButton" class="btn btn-danger" type="submit" onclick="redButtonOnclick()">RED</button>
-                <button id="greenButton" type="button" class="btn btn-success" onclick="greenButtonOnclick()">GREEN</button>
-                <button id="blueButton" type="button" class="btn btn-primary" onclick="blueButtonOnclick()">BLUE</button>
+            </div>
+            <div class="row">
+                <button id="redButton" class="btn btn-danger custom" type="submit" onclick="redButtonOnclick()">RED</button>
                 <!--<a href="@routes.Application.redButtonOnclick"-->
-                   <!--class="btn btn-danger" >RED</a>-->
+                <!--class="btn btn-danger" >RED</a>-->
+            </div>
+            <br/>
+            <div class="row">
+                <button id="greenButton" type="button" class="btn btn-success custom" onclick="greenButtonOnclick()">GREEN</button>
+            </div>
+            <br/>
+            <div class="row">
+                <button id="blueButton" type="button" class="btn btn-primary custom" onclick="blueButtonOnclick()">BLUE</button>
             </div>
         </div>
 

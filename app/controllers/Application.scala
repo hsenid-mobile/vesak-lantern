@@ -49,6 +49,10 @@ object Application extends Controller with Logging{
     Ok(hexValue)
   }
 
+  def getOpacity = Action {
+    Ok("" + getRandomOpacityValue)
+  }
+
   def toHex(r: Int, g: Int, b: Int): String = {
     "#" + toBrowserHexValue(r) + toBrowserHexValue(g) + toBrowserHexValue(b)
   }
@@ -65,6 +69,11 @@ object Application extends Controller with Logging{
   def getRandomValue: Int = {
     val rnd = new scala.util.Random
     rnd.nextInt(100)
+  }
+
+  def getRandomOpacityValue: Double = {
+    val rnd = new scala.util.Random
+    rnd.nextDouble()
   }
 
 }

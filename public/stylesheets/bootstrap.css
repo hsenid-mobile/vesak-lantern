@@ -5812,4 +5812,50 @@ button.close {
     letter-spacing: 1px;
 }
 
+.main-lantern-structure
+{
+    /*border: 1px solid #000;*/
+    position: relative;
+    height: 300px !important;
+}
+
+.blue-lantern-img
+{
+    /*border: 1px solid #f00;*/
+    position: relative;
+    z-index: 5;
+    opacity:0.9;
+    /*filter:alpha(opacity=40); *//* For IE8 and earlier */
+}
+
+.red-lantern-img
+{
+    /*border: 1px solid #0f0;*/
+    position: relative;
+    z-index: 1;
+    top: -400px;
+    left: 1px;
+    opacity:0.9;
+    /*filter:alpha(opacity=40); *//* For IE8 and earlier */
+}
+
+.green-lantern-img
+{
+    /*border: 1px solid #0f0;*/
+    position: relative;
+    z-index: 3;
+    top: -800px;
+    left: 1px;
+    opacity:0.9;
+    /*filter:alpha(opacity=40); *//* For IE8 and earlier */
+}
+
+.custom {
+    width: 300px !important;
+}
+
+.lantern-sketch {
+    width : 550px;
+    height : 400px;
+}
 /*# sourceMappingURL=bootstrap.css.map */

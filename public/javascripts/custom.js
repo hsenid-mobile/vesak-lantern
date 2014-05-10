@@ -3,7 +3,8 @@
 $(document).ready(function() {
     // check name availability on focus lost
     checkAvailability();
-    changeLanternColor()
+    changeLanternColor();
+    changOpacity()
 });
 
 var checkAvailability =  function() {
@@ -30,6 +31,22 @@ var changeLanternColor = function() {
         success: function(data, textStatus, jqXHR) {
             rect1.style.fill=data
             setTimeout(changeLanternColor, 3000)
+        },
+        error: function(jqXHR, textStatus, errorThrown) {
+            window.alert(textStatus);
+        }
+//                setTimeout(checkPositionAvailability, 3000)
+
+    });
+}
+
+var changOpacity = function() {
+    $.ajax({
+        url: '/getOpacity',
+        success: function(data, textStatus, jqXHR) {
+            console.log("values :"+ data);
+            blueImg.style.opacity = data;
+            setTimeout(changOpacity, 3000)
         },
         error: function(jqXHR, textStatus, errorThrown) {
             window.alert(textStatus);
