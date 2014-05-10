@@ -17,6 +17,7 @@ trait VoteEnableColorControlChannel extends ColorControlChannel {
   var nextIntensity = LanternColor(red = 0, green = 0, blue = 0)
 
   resetScheduler
+  counterUpdateScheduler
 
   override def currentIntensity : LanternColor = {
     nextIntensity
@@ -31,7 +32,7 @@ trait VoteEnableColorControlChannel extends ColorControlChannel {
     }
   }
 
-  def resetScheduler {
+  def counterUpdateScheduler {
     val actorSystem = ActorSystem()
     val scheduler = actorSystem.scheduler
     val task = new Runnable {
@@ -45,9 +46,28 @@ trait VoteEnableColorControlChannel extends ColorControlChannel {
 
     scheduler.schedule(
       initialDelay = Duration(5, TimeUnit.SECONDS),
-      interval = Duration(10, TimeUnit.SECONDS),
+      interval = Duration(2, TimeUnit.SECONDS),
       runnable = task)
   }
+
+  def resetScheduler {
+    val actorSystem = ActorSystem()
+    val scheduler = actorSystem.scheduler
+    val task = new Runnable {
+      def run() {
+        synchronized {
+          List(red, green, blue).foreach(color => color.set(0))
+        }
+      }
+    }
+    implicit val executor = actorSystem.dispatcher
+
+    scheduler.schedule(
+      initialDelay = Duration(5, TimeUnit.SECONDS),
+      interval = Duration(1, TimeUnit.HOURS),
+      runnable = task)
+  }
+
 
   def calculateAndRestForNextCycle {
     val l = List(red.get(), green.get(), blue.get())
@@ -66,7 +86,6 @@ trait VoteEnableColorControlChannel extends ColorControlChannel {
       }
     }
     nextIntensity = LanternColor(red = getRank(red.get()), green = getRank(green.get()), blue = getRank(blue.get()))
-    List(red, green, blue).foreach(color => color.set(0))
   }
 
 }
