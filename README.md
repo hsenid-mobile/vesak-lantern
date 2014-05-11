@@ -30,3 +30,7 @@ curl http://localhost:9000/sms -H "Content-Type: application/json" -X POST -d'
 "applicationId": "APP_000001"}'
 
 </pre>
+
+
+To View Lantern Web App
+http://localhost:9000/lantern
