@@ -59,13 +59,7 @@ object Application extends Controller with Logging{
     Ok("" + votePercentageBuilder.toString())
   }*/
   def reset = Action {
-    List(HttpColorControlChannel, SmsColorControlChannel).foreach(
-      c1 => {
-        c1.red.set(0)
-        c1.blue.set(0)
-        c1.green.set(0)
-      }
-    )
+    List(SmsColorControlChannel, HttpColorControlChannel).foreach(c => c.reset)
     Ok("")
   }
 

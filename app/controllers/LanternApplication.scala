@@ -39,7 +39,7 @@ object LanternApplication extends Controller with Logging {
         logger.info(s"Vote received [${vote}]")
 
         if("reset".equals(vote.toLowerCase)) {
-          SmsColorControlChannel.reset
+          List(SmsColorControlChannel, HttpColorControlChannel).foreach(c => c.reset)
         } else {
           SmsColorControlChannel.vote(vote.charAt(0).toString)
         }
