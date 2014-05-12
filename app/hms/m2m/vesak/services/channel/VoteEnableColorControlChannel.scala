@@ -74,7 +74,7 @@ trait VoteEnableColorControlChannel extends ColorControlChannel {
 
     def getRank(i : Int) : Int = {
       if(i == 0) {
-        return 0
+        return 5
       }
 
       if (l.max == i) {
