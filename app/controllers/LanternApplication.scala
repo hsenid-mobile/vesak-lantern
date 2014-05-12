@@ -19,17 +19,6 @@ object LanternApplication extends Controller with Logging {
 
   }
 
-  def reset = Action {
-    List(HttpColorControlChannel, SmsColorControlChannel).foreach(
-      c1 => {
-        c1.red.set(0)
-        c1.blue.set(0)
-        c1.green.set(0)
-      }
-    )
-    Ok("")
-  }
-
   def onSms = Action(parse.json) { request =>
 
     unmarshalUserResource(request, (sms: SmsMessage) => {
