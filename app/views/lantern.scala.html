@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/main.css")">
     <link rel="shortcut icon" type="image/png" href="@routes.Assets.at("images/favicon.png")">
-    <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/bootstrap.min.css")">
+    <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/bootstrap-responsive.css")">
     <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/bootstrap.css")">
 
     <script src="@routes.Assets.at("javascripts/jquery-1.9.0.min.js")" type="text/javascript"></script>
@@ -23,12 +23,12 @@
     <div class="row" style="text-align: center">
         <img  style="width: 70px; height: 70px" src="@routes.Assets.at("images/hsenid_logo.jpeg")"/>
         <img  style="width: 180px; height: 50px" src="@routes.Assets.at("images/logo.png")"/>
-        <h2 class='text-info'> M2M - Vesak Lantern </h2>
+        <h3 class='text-info'> M2M - Vesak Lantern </h3>
     </div>
     <br/>
     <div class="row">
         <div class="col-md-6">
-            <div class="main-lantern-structure" style="text-align: center; height: 600px">
+            <div class="main-lantern-structure">
                 <img id="blueImg" class="blue-lantern-img lantern-sketch" src="@routes.Assets.at("images/lantern_mothe_blue1.png")"/>
                 <img id="redImg" class="red-lantern-img lantern-sketch" src="@routes.Assets.at("images/lantern_mother_red1.png")"  />
                 <img id="greenImg" class="green-lantern-img lantern-sketch" src="@routes.Assets.at("images/lantern_mother_green1.png")"/>
@@ -39,45 +39,45 @@
                 <h3 class='text-info'>Vote Now</h3>
             </div>
             <div class="row">
-                <button id="redButton" class="btn btn-danger custom" type="submit" onclick="redButtonOnclick()">RED</button>
+                <button id="redButton" class="btn btn-danger btn-block" type="submit" onclick="redButtonOnclick()">RED</button>
             </div>
             <br/>
             <div class="row">
-                <button id="greenButton" type="button" class="btn btn-success custom" onclick="greenButtonOnclick()">GREEN</button>
+                <button id="greenButton" type="button" class="btn btn-success btn-block" onclick="greenButtonOnclick()">GREEN</button>
             </div>
             <br/>
             <div class="row">
-                <button id="blueButton" type="button" class="btn btn-primary custom" onclick="blueButtonOnclick()">BLUE</button>
+                <button id="blueButton" type="button" class="btn btn-primary btn-block" onclick="blueButtonOnclick()">BLUE</button>
             </div>
             <hr>
             <div class="row">
                 <h3 class='text-info'>Voting Counter</h3>
                 <br/>
-                <div class="col-sm-7 col-md-offset-2">
+                <div class="col-sm-9">
                     <div class="progress progress-striped active">
                         <div id="redProgressBar" class="progress-bar progress-bar-danger"  role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100">
                             <span class="sr-only">45% Complete</span>
                         </div>
                     </div>
                 </div>
-                <label id="redVotesLabel" class="col-sm-2" style="color: red; font-size: 16px">0</label>
-                <div class="col-sm-7 col-md-offset-2">
+                <label id="redVotesLabel" class="col-sm-3" style="color: red; font-size: 16px">0</label>
+                <div class="col-sm-9">
                     <div class="progress progress-striped active">
                         <div id="greenProgressBar" class="progress-bar progress-bar-success"  role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">
                             <span class="sr-only">45% Complete</span>
                         </div>
                     </div>
                 </div>
-                <label id="greenVotesLabel" class="col-sm-2" style="color: green; font-size: 16px">0</label>
+                <label id="greenVotesLabel" class="col-sm-3" style="color: green; font-size: 16px">0</label>
                 <div class="form-group">
-                <div class="col-sm-7 col-md-offset-2">
+                <div class="col-sm-9">
                     <div class="progress progress-striped active">
                         <div id="blueProgressBar" class="progress-bar progress-bar-info"  role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100">
                             <span class="sr-only">45% Complete</span>
                         </div>
                     </div>
                 </div>
-                <label id="blueVotesLabel" class="col-sm-2" style="color: blue; font-size: 16px">0</label>
+                <label id="blueVotesLabel" class="col-sm-3" style="color: blue; font-size: 16px">0</label>
                 </div>
             </div>
             <hr/>

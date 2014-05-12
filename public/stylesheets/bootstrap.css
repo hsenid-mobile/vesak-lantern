@@ -5816,7 +5816,7 @@ button.close {
 {
     /*border: 1px solid #000;*/
     position: relative;
-    height: 300px !important;
+    /*height: 300px !important;*/
 }
 
 .blue-lantern-img
@@ -5824,18 +5824,16 @@ button.close {
     /*border: 1px solid #f00;*/
     position: relative;
     z-index: 5;
-    left: -80px;
+    /*left: -50px;*/
     opacity:0.9;
     /*filter:alpha(opacity=40); *//* For IE8 and earlier */
 }
-
 .red-lantern-img
 {
     /*border: 1px solid #0f0;*/
     position: relative;
     z-index: 1;
-    top: -310px;
-    left: -80px;
+    /*left: -50px;*/
     opacity:0.9;
     /*filter:alpha(opacity=40); *//* For IE8 and earlier */
 }
@@ -5845,19 +5843,22 @@ button.close {
     /*border: 1px solid #0f0;*/
     position: relative;
     z-index: 3;
-    top: -618px;
-    left: -80px;
+    /*left: -50px;*/
     opacity:0.9;
     /*filter:alpha(opacity=40); *//* For IE8 and earlier */
 }
-
+.lantern-sketch.green-lantern-img {
+    position : relative;
+}
 .custom {
     width: 300px !important;
     height: 50px !important;
 }
 
 .lantern-sketch {
-    width : 550px;
+    width : 125%;
+    left: -12%;
+    position : absolute;
     /*height : 400px;*/
 }
 

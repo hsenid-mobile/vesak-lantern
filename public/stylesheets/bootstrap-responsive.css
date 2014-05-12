@@ -70,6 +70,17 @@
   .visible-desktop {
     display: none !important;
   }
+
+    .btn.btn-danger:active {
+        background-color: #5A1C1A;
+    }
+    .btn.btn-success:active {
+        background-color: #224B22;
+    }
+    .btn.btn-primary:active {
+        background-color: #143149;
+    }
+
 }
 
 @media (min-width: 768px) and (max-width: 979px) {
