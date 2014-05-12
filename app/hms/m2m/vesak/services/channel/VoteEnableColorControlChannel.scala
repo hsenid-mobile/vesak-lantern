@@ -52,7 +52,7 @@ trait VoteEnableColorControlChannel extends ColorControlChannel {
 
     scheduler.schedule(
       initialDelay = Duration(5, TimeUnit.SECONDS),
-      interval = Duration(10, TimeUnit.SECONDS),
+      interval = Duration(2, TimeUnit.SECONDS),
       runnable = task)
   }
 
@@ -70,7 +70,7 @@ trait VoteEnableColorControlChannel extends ColorControlChannel {
 
     scheduler.schedule(
       initialDelay = Duration(5, TimeUnit.SECONDS),
-      interval = Duration(2, TimeUnit.MINUTES),
+      interval = Duration(10, TimeUnit.MINUTES),
       runnable = task)
   }
 
