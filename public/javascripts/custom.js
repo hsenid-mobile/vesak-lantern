@@ -16,12 +16,12 @@ var checkVoteNum =  function() {
             console.log(totalValues.percentage.red);
 
             $('#redVotesLabel').html(totalValues.vote.red);
-            $('#greenVotesLabel').html(totalValues.vote.blue);
-            $('#blueVotesLabel').html(totalValues.vote.green);
+            $('#greenVotesLabel').html(totalValues.vote.green);
+            $('#blueVotesLabel').html(totalValues.vote.blue);
 
             $('#redProgressBar').width(totalValues.percentage.red+'%').text(totalValues.percentage.red+'%')
-            $('#greenProgressBar').width(totalValues.percentage.blue+'%').text(totalValues.percentage.blue+'%')
-            $('#blueProgressBar').width(totalValues.percentage.green+'%').text(totalValues.percentage.green+'%')
+            $('#greenProgressBar').width(totalValues.percentage.green+'%').text(totalValues.percentage.green+'%')
+            $('#blueProgressBar').width(totalValues.percentage.blue+'%').text(totalValues.percentage.blue+'%')
 
             setTimeout(checkVoteNum, 1000)
         },
