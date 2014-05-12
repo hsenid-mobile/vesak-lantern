@@ -7,6 +7,10 @@ import play.api.libs.json.{JsValue, Json}
 import java.util.Date
 import hms.m2m.vesak.model.JasonFormats._
 import com.typesafe.scalalogging.slf4j.Logging
+<<<<<<< HEAD
+=======
+import hms.m2m.vesak.services.channel.HttpColorControlChannel
+>>>>>>> 3e222036efe51ebde840b3fa57d6ffc4886f21e3
 
 //import java.lang.{StringBuilder, String, Integer}
 import scala.util.Random
@@ -29,17 +33,17 @@ object Application extends Controller with Logging{
 
   //
   def redButtonOnclick = Action {
-    logger.info("Red Button Click !!!")
+    HttpColorControlChannel.vote("r")
     Ok("")
   }
 
   def greenButtonOnclick = Action {
-    logger.info("Green Button Click !!!")
+    HttpColorControlChannel.vote("g")
     Ok("")
   }
 
   def blueButtonOnclick = Action {
-    logger.info("Blue Button Click !!!")
+    HttpColorControlChannel.vote("b")
     Ok("")
   }
 
