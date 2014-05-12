@@ -20,9 +20,9 @@ trait VoteEnableColorControlChannel extends ColorControlChannel {
   counterUpdateScheduler
 
   def reset {
-    red.set(1)
-    green.set(1)
-    blue.set(1)
+    red.set(0)
+    green.set(0)
+    blue.set(0)
   }
 
   override def currentIntensity : LanternColor = {
