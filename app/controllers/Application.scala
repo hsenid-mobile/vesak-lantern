@@ -65,7 +65,7 @@ object Application extends Controller with Logging{
 
   def getVotes = Action {
 
-    val colors: List[(AtomicInteger, AtomicInteger, AtomicInteger)] = List(HttpColorControlChannel, SmsColorControlChannel).map(c => (c.red, c.blue, c.green))
+    val colors: List[(AtomicInteger, AtomicInteger, AtomicInteger)] = List(HttpColorControlChannel, SmsColorControlChannel).map(c => (c.red, c.green, c.blue))
     val totalColorCount: (AtomicInteger, AtomicInteger, AtomicInteger) = colors.reduce((c1, c2) => (new AtomicInteger(c1._1.get() + c2._1.get()), new AtomicInteger(c1._2.get() + c2._2.get()), new AtomicInteger(c1._3.get() + c2._3.get())))
 
     val totalCount: Int = totalColorCount._1.get() + totalColorCount._2.get() + totalColorCount._3.get()
