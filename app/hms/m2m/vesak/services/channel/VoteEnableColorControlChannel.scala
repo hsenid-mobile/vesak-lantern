@@ -79,10 +79,8 @@ trait VoteEnableColorControlChannel extends ColorControlChannel {
 
       if (l.max == i) {
         255
-      } else if (l.min == i) {
-        15
       } else {
-        30
+        (i * 255) / l.max
       }
     }
     nextIntensity = LanternColor(red = getRank(red.get()), green = getRank(green.get()), blue = getRank(blue.get()))
