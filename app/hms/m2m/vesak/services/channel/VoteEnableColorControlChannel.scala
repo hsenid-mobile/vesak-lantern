@@ -77,9 +77,12 @@ trait VoteEnableColorControlChannel extends ColorControlChannel {
 
   def calculateAndRestForNextCycle {
     val l = List(red.get(), green.get(), blue.get())
+    val totalVoteCount: Int = l.reduce((c1, c2) => c1 + c2)
 
     def getRank(i : Int) : Int = {
-      if(i == 0) {
+      if(totalVoteCount == 0) {
+        return 0
+      } else if(i == 0) {
         return 1
       }
 
