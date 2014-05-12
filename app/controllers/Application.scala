@@ -7,11 +7,7 @@ import play.api.libs.json.{JsValue, Json}
 import java.util.Date
 import hms.m2m.vesak.model.JasonFormats._
 import com.typesafe.scalalogging.slf4j.Logging
-<<<<<<< HEAD
-=======
 import hms.m2m.vesak.services.channel.HttpColorControlChannel
->>>>>>> 3e222036efe51ebde840b3fa57d6ffc4886f21e3
-
 //import java.lang.{StringBuilder, String, Integer}
 import scala.util.Random
 import scala.Predef.String
