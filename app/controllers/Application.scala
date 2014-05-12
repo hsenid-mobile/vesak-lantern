@@ -5,6 +5,8 @@ import play.api.mvc._
 import hms.m2m.vesak.services.StatusScheduler
 import java.util.Date
 import com.typesafe.scalalogging.slf4j.Logging
+import hms.m2m.vesak.services.channel.HttpColorControlChannel
+
 //import java.lang.{StringBuilder, String, Integer}
 import scala.util.Random
 import scala.Predef.String
@@ -26,17 +28,17 @@ object Application extends Controller with Logging{
 
   //
   def redButtonOnclick = Action {
-    logger.info("Red Button Click !!!")
+    HttpColorControlChannel.vote("r")
     Ok("")
   }
 
   def greenButtonOnclick = Action {
-    logger.info("Green Button Click !!!")
+    HttpColorControlChannel.vote("g")
     Ok("")
   }
 
   def blueButtonOnclick = Action {
-    logger.info("Blue Button Click !!!")
+    HttpColorControlChannel.vote("b")
     Ok("")
   }
 

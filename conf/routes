@@ -4,11 +4,11 @@
 
 GET     /                          controllers.Application.index
 GET     /lantern                   controllers.Application.lantern
-GET     /getVotes                      controllers.Application.getVotes
+GET     /getVotes                  controllers.Application.getVotes
 GET     /color                     controllers.LanternApplication.color
 POST    /sms                       controllers.LanternApplication.onSms
 GET     /changeColor               controllers.Application.changeColor
-GET     /getOpacity               controllers.Application.getOpacity
+GET     /getOpacity                controllers.Application.getOpacity
 GET     /redButtonOnclick          controllers.Application.redButtonOnclick
 GET     /greenButtonOnclick        controllers.Application.greenButtonOnclick
 GET     /blueButtonOnclick         controllers.Application.blueButtonOnclick
