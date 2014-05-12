@@ -56,7 +56,7 @@ trait VoteEnableColorControlChannel extends ColorControlChannel {
     val task = new Runnable {
       def run() {
         synchronized {
-          List(red, green, blue).foreach(color => color.set(0))
+          List(red, green, blue).foreach(color => color.set((color.get() * 9) / 10))
         }
       }
     }
@@ -64,7 +64,7 @@ trait VoteEnableColorControlChannel extends ColorControlChannel {
 
     scheduler.schedule(
       initialDelay = Duration(5, TimeUnit.SECONDS),
-      interval = Duration(1, TimeUnit.HOURS),
+      interval = Duration(1, TimeUnit.MINUTES),
       runnable = task)
   }
 

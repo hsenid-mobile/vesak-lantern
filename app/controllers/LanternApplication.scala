@@ -7,7 +7,7 @@ import hms.m2m.vesak.model.{SdpResp, SmsMessage}
 import hms.m2m.vesak.model.JasonFormats._
 import com.typesafe.scalalogging.slf4j.Logging
 import scala.util.control.Exception._
-import hms.m2m.vesak.services.channel.SmsColorControlChannel
+import hms.m2m.vesak.services.channel.{HttpColorControlChannel, SmsColorControlChannel}
 
 
 object LanternApplication extends Controller with Logging {
@@ -17,6 +17,17 @@ object LanternApplication extends Controller with Logging {
 
     Ok(Json.toJson(LanternService.currentColor))
 
+  }
+
+  def reset = Action {
+    List(HttpColorControlChannel, SmsColorControlChannel).foreach(
+      c1 => {
+        c1.red.set(0)
+        c1.blue.set(0)
+        c1.green.set(0)
+      }
+    )
+    Ok("")
   }
 
   def onSms = Action(parse.json) { request =>

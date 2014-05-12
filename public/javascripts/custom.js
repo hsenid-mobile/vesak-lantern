@@ -3,49 +3,30 @@
 $(document).ready(function() {
     // check name availability on focus lost
     checkVoteNum();
-    checkVotePercentage();
     changeLanternColor()
 });
 
 var checkVoteNum =  function() {
     $.ajax({
-        url: '/getVoteNum',
+        url: '/getVotes',
         success: function(data, textStatus, jqXHR) {
-            var votes = data.split(':');
-            var redVotes    = votes[0];
-            var greenVotes  = votes[1];
-            var blueVotes   = votes[2];
 
-            $('#redVotesLabel').html(redVotes);
-            $('#greenVotesLabel').html(greenVotes);
-            $('#blueVotesLabel').html(blueVotes);
+            var totalValues = JSON.parse(data);
+            console.log(totalValues.vote.red);
+            console.log(totalValues.percentage.red);
+
+            $('#redVotesLabel').html(totalValues.vote.red);
+            $('#greenVotesLabel').html(totalValues.vote.blue);
+            $('#blueVotesLabel').html(totalValues.vote.green);
+
+            $('#redProgressBar').width(totalValues.percentage.red+'%').text(totalValues.percentage.red+'%')
+            $('#greenProgressBar').width(totalValues.percentage.blue+'%').text(totalValues.percentage.blue+'%')
+            $('#blueProgressBar').width(totalValues.percentage.green+'%').text(totalValues.percentage.green+'%')
+
             setTimeout(checkVoteNum, 1000)
         },
         error: function(jqXHR, textStatus, errorThrown) {
             console.log("Error occurred" + errorThrown)
-        }
-
-    });
-}
-
-var checkVotePercentage =  function() {
-    $.ajax({
-        url: '/getVotePercentage',
-        success: function(data, textStatus, jqXHR) {
-            var votes = data.split(':');
-            var redVotes    = votes[0];
-            var greenVotes  = votes[1];
-            var blueVotes   = votes[2];
-//            $('#ajaxMsg').html(data);
-//            $('#ajaxMsgBlue').html(data);
-            $('#redProgressBar').width(redVotes+'%').text(redVotes+'%')
-            $('#greenProgressBar').width(greenVotes+'%').text(greenVotes+'%')
-            $('#blueProgressBar').width(blueVotes+'%').text(blueVotes+'%')
-            setTimeout(checkVotePercentage, 1000)
-        },
-        error: function(jqXHR, textStatus, errorThrown) {
-            console.log("Error occurred" + errorThrown)
-//            window.alert(textStatus);
         }
 
     });
