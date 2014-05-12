@@ -5865,6 +5865,10 @@ button.close {
    color: #11693D
 }
 
+.footer-info {
+    color: #695816
+}
+
 .btn3d {
     transition: all .08s linear;
     position: relative;
