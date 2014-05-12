@@ -19,6 +19,12 @@ trait VoteEnableColorControlChannel extends ColorControlChannel {
   resetScheduler
   counterUpdateScheduler
 
+  def reset {
+    red.set(1)
+    green.set(1)
+    blue.set(1)
+  }
+
   override def currentIntensity : LanternColor = {
     nextIntensity
   }
@@ -56,7 +62,7 @@ trait VoteEnableColorControlChannel extends ColorControlChannel {
     val task = new Runnable {
       def run() {
         synchronized {
-          List(red, green, blue).foreach(color => color.set((color.get() * 9) / 10))
+          List(red, green, blue).foreach(color => color.set((color.get() * 999) / 1000))
         }
       }
     }
@@ -64,7 +70,7 @@ trait VoteEnableColorControlChannel extends ColorControlChannel {
 
     scheduler.schedule(
       initialDelay = Duration(5, TimeUnit.SECONDS),
-      interval = Duration(10, TimeUnit.MINUTES),
+      interval = Duration(2, TimeUnit.MINUTES),
       runnable = task)
   }
 
@@ -74,7 +80,7 @@ trait VoteEnableColorControlChannel extends ColorControlChannel {
 
     def getRank(i : Int) : Int = {
       if(i == 0) {
-        return 5
+        return 1
       }
 
       if (l.max == i) {

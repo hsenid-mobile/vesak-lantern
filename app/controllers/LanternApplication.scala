@@ -38,7 +38,11 @@ object LanternApplication extends Controller with Logging {
       case kwd :: vote :: rest => {
         logger.info(s"Vote received [${vote}]")
 
-        SmsColorControlChannel.vote(vote.charAt(0).toString)
+        if("reset".equals(vote.toLowerCase)) {
+          SmsColorControlChannel.reset
+        } else {
+          SmsColorControlChannel.vote(vote.charAt(0).toString)
+        }
       }
       case _ => throw new RuntimeException("Invalid vote")
     }
