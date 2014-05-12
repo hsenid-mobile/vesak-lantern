@@ -2,9 +2,12 @@ package controllers
 
 import play.api._
 import play.api.mvc._
-import hms.m2m.vesak.services.StatusScheduler
+import hms.m2m.vesak.services.{LanternService, StatusScheduler}
+import play.api.libs.json.{JsValue, Json}
 import java.util.Date
+import hms.m2m.vesak.model.JasonFormats._
 import com.typesafe.scalalogging.slf4j.Logging
+
 //import java.lang.{StringBuilder, String, Integer}
 import scala.util.Random
 import scala.Predef.String
@@ -40,17 +43,25 @@ object Application extends Controller with Logging{
     Ok("")
   }
 
-  def getVotes = Action {
-    Ok("" + getRandomValue)
+  def getVoteNum = Action {
+    val voteNumBuilder = new StringBuilder
+    voteNumBuilder.append(getRandomValue).append(":").append(getRandomValue).append(":").append(getRandomValue)
+    Ok("" + voteNumBuilder.toString())
+  }
+
+  def getVotePercentage = Action {
+    val votePercentageBuilder = new StringBuilder
+    votePercentageBuilder.append(getRandomValue).append(":").append(getRandomValue).append(":").append(getRandomValue)
+    Ok("" + votePercentageBuilder.toString())
   }
 
   def changeColor = Action {
     val hexValue = toHex(getRandomValue, getRandomValue, getRandomValue)
-    Ok(hexValue)
+    Ok(hexValue+":"+"85")
   }
 
-  def getOpacity = Action {
-    Ok("" + getRandomOpacityValue)
+  def getLanternColor = Action {
+    Ok(""+Json.toJson(LanternService.currentColor))
   }
 
   def toHex(r: Int, g: Int, b: Int): String = {

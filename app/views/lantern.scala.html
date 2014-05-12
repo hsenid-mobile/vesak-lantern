@@ -29,10 +29,10 @@
     <br/>
     <div class="row">
         <div class="col-md-6">
-            <div class="main-lantern-structure" style="text-align: center">
-                <img id="blueImg" class="blue-lantern-img lantern-sketch" src="@routes.Assets.at("images/lantern_sketch_blue.svg")"/>
-                <img id="redImg" class="red-lantern-img lantern-sketch" src="@routes.Assets.at("images/lantern_sketch_red.svg")"  />
-                <img id="greenImg" class="green-lantern-img lantern-sketch" src="@routes.Assets.at("images/lantern_sketch_sv2.svg")"/>
+            <div class="main-lantern-structure" style="text-align: center; height: 600px">
+                <img id="blueImg" class="blue-lantern-img lantern-sketch" src="@routes.Assets.at("images/lantern_mothe_blue1.png")"/>
+                <img id="redImg" class="red-lantern-img lantern-sketch" src="@routes.Assets.at("images/lantern_mother_red1.png")"  />
+                <img id="greenImg" class="green-lantern-img lantern-sketch" src="@routes.Assets.at("images/lantern_mother_green1.png")"/>
             </div>
 
             <!--<svg id="svg1" xmlns="http://www.w3.org/2000/svg" style="width: 3.5in; height: 1in">-->
@@ -43,43 +43,6 @@
 
 
         <div class="col-md-6" style="text-align: center">
-
-            <div class="row">
-                <h3 class='text-info'>Voting Statistics</h3>
-                <br/>
-                <div class="col-sm-7 col-md-offset-2">
-                    <div class="progress progress-striped active">
-                        <div id="redProgressBar" class="progress-bar progress-bar-danger"  role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100">
-                            <span class="sr-only">45% Complete</span>
-                        </div>
-                    </div>
-                </div>
-                <label id="ajaxMsg" class="col-sm-2" style="color: red">10000</label>
-
-                <!--<div class="form-group">-->
-                <div class="col-sm-7 col-md-offset-2">
-                    <div class="progress progress-striped active">
-                        <div id="greenProgressBar" class="progress-bar progress-bar-success"  role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 45%">
-                            <span class="sr-only">45% Complete</span>
-                        </div>
-                    </div>
-                </div>
-                <label class="col-sm-2" style="color: green">10000</label>
-                <!--</div>-->
-
-                <!--<div class="form-group">-->
-                <div class="col-sm-7 col-md-offset-2">
-                    <div class="progress progress-striped active">
-                        <div id="blueProgressBar" class="progress-bar progress-bar-info"  role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 45%">
-                            <span class="sr-only">45% Complete</span>
-                        </div>
-                    </div>
-                </div>
-                <label id="ajaxMsgBlue" class="col-sm-2" style="color: blue">4500</label>
-                <!--</div>-->
-            </div>
-            <hr>
-
             <div class="row">
                 <h3 class='text-info'>Vote Now</h3>
             </div>
@@ -96,6 +59,43 @@
             <div class="row">
                 <button id="blueButton" type="button" class="btn btn-primary custom" onclick="blueButtonOnclick()">BLUE</button>
             </div>
+
+            <hr>
+
+            <div class="row">
+                <h3 class='text-info'>Voting Counter</h3>
+                <br/>
+                <div class="col-sm-7 col-md-offset-2">
+                    <div class="progress progress-striped active">
+                        <div id="redProgressBar" class="progress-bar progress-bar-danger"  role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100">
+                            <span class="sr-only">45% Complete</span>
+                        </div>
+                    </div>
+                </div>
+                <label id="redVotesLabel" class="col-sm-2" style="color: red; font-size: 16px">10000</label>
+                <!--<div class="form-group">-->
+                <div class="col-sm-7 col-md-offset-2">
+                    <div class="progress progress-striped active">
+                        <div id="greenProgressBar" class="progress-bar progress-bar-success"  role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 45%">
+                            <span class="sr-only">45% Complete</span>
+                        </div>
+                    </div>
+                </div>
+                <label id="greenVotesLabel" class="col-sm-2" style="color: green; font-size: 16px">10000</label>
+                <!--</div>-->
+                <div class="form-group">
+                <div class="col-sm-7 col-md-offset-2">
+                    <div class="progress progress-striped active">
+                        <div id="blueProgressBar" class="progress-bar progress-bar-info"  role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 45%">
+                            <span class="sr-only">45% Complete</span>
+                        </div>
+                    </div>
+                </div>
+                <label id="blueVotesLabel" class="col-sm-2" style="color: blue; font-size: 16px">4500</label>
+                </div>
+            </div>
+
+
         </div>
 
     </div>
