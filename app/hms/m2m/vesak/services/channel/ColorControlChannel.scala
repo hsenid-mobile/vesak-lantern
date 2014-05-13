@@ -8,6 +8,4 @@ trait ColorControlChannel extends Logging{
 
   val channelWeight = new AtomicInteger(1)
 
-  def currentIntensity = LanternColor(red = 120, green = 120, blue = 120)
-
 }

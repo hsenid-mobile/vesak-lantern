@@ -22,10 +22,10 @@ object InternalColorControlChannel extends ColorControlChannel{
   val phaseG = new AtomicInteger(fullCycleDegree / 3)
   val phaseB = new AtomicInteger(2 * fullCycleDegree / 3)
 
-  val maxIntensity = 90
+  val maxIntensity = 150
   val minIntensity = 0
 
-  override def currentIntensity : LanternColor =  {
+  def currentIntensity : LanternColor =  {
 
     def calculateIntensity(i : Int) : Int  = {
       (minIntensity + Math.abs(Math.sin(piDegreeConversion * i)) * (maxIntensity - minIntensity)).toInt

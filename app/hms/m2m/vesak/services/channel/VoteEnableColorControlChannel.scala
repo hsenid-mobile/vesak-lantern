@@ -14,19 +14,12 @@ trait VoteEnableColorControlChannel extends ColorControlChannel {
   val green = new AtomicInteger(0)
   val blue = new AtomicInteger(0)
 
-  var nextIntensity = LanternColor(red = 0, green = 0, blue = 0)
-
   resetScheduler
-  counterUpdateScheduler
 
   def reset {
     red.set(0)
     green.set(0)
     blue.set(0)
-  }
-
-  override def currentIntensity : LanternColor = {
-    nextIntensity
   }
 
   def vote(color : String) {
@@ -36,24 +29,6 @@ trait VoteEnableColorControlChannel extends ColorControlChannel {
       case "b" => blue.incrementAndGet
       case _ =>
     }
-  }
-
-  def counterUpdateScheduler {
-    val actorSystem = ActorSystem()
-    val scheduler = actorSystem.scheduler
-    val task = new Runnable {
-      def run() {
-        synchronized {
-          calculateAndRestForNextCycle
-        }
-      }
-    }
-    implicit val executor = actorSystem.dispatcher
-
-    scheduler.schedule(
-      initialDelay = Duration(5, TimeUnit.SECONDS),
-      interval = Duration(2, TimeUnit.SECONDS),
-      runnable = task)
   }
 
   def resetScheduler {
@@ -72,27 +47,6 @@ trait VoteEnableColorControlChannel extends ColorControlChannel {
       initialDelay = Duration(5, TimeUnit.SECONDS),
       interval = Duration(10, TimeUnit.MINUTES),
       runnable = task)
-  }
-
-
-  def calculateAndRestForNextCycle {
-    val l = List(red.get(), green.get(), blue.get())
-    val totalVoteCount: Int = l.reduce((c1, c2) => c1 + c2)
-
-    def getRank(i : Int) : Int = {
-      if(totalVoteCount == 0) {
-        return 0
-      } else if(i == 0) {
-        return 1
-      }
-
-      if (l.max == i) {
-        255
-      } else {
-        (i * 255) / l.max
-      }
-    }
-    nextIntensity = LanternColor(red = getRank(red.get()), green = getRank(green.get()), blue = getRank(blue.get()))
   }
 
 }
